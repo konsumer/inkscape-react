@@ -24,7 +24,7 @@ parseString(svg, function (err, result) {
     console.error(err)
     process.exit(1)
   }
-  var name = classify(basename(svg['$']['sodipodi:docname'], '.jsx'))
+  var name = classify(basename(result['svg']['$']['sodipodi:docname'], '.jsx'))
   svgtojsx(svg)
     .then(function (jsx) {
       console.log([
