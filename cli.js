@@ -18,12 +18,14 @@ var args = require('yargs')
 
 svgtojsx(readFile(args._[0])).then(function (jsx) {
   var name = inflection.classify(basename(args._[0], '.svg'))
+  if (name.slice(0, 13) === 'InkExtXxxxxx.') {
+    name = inflection.classify(name.slice(13))
+  }
   console.log([
     'export const ' + name + ' = () => (',
     indentString(jsx, 2),
     ')',
-    'export default ' + name,
-    ''
+    'export default ' + name
   ].join('\n'))
 })
 .catch(function (err) {
