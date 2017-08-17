@@ -2,6 +2,9 @@
 
 var svgtojsx = require('svg-to-jsx')
 var readFile = require('fs').readFileSync
+var basename = require('path').basename
+var indentString = require('indent-string')
+var inflection = require('inflection')
 
 var args = require('yargs')
   .usage('Usage: $0 <SVG_FILE>')
@@ -14,5 +17,16 @@ var args = require('yargs')
   .argv
 
 svgtojsx(readFile(args._[0])).then(function (jsx) {
-  console.log(jsx)
+  var name = inflection.classify(basename(args._[0], '.svg'))
+  console.log([
+    'export const ' + name + ' = () => (',
+    indentString(jsx, 2),
+    ')',
+    'export default ' + name,
+    ''
+  ].join('\n'))
+})
+.catch(function (err) {
+  console.error(err)
+  process.exit(1)
 })
