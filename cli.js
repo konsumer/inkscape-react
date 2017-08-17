@@ -24,10 +24,16 @@ parseString(svg, function (err, result) {
     console.error(err)
     process.exit(1)
   }
-  var name = classify(basename(result['svg']['$']['sodipodi:docname'], '.jsx'))
+  var fname = result['svg']['$']['sodipodi:docname']
+  if (!fname) {
+    fname = basename(args._[0], '.svg')
+  }
+  var name = classify(basename(fname, '.jsx'))
   svgtojsx(svg)
     .then(function (jsx) {
       console.log([
+        "import React from 'react'",
+        '',
         'export const ' + name + ' = () => (',
         indentString(jsx, 2),
         ')',
