@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-  <_name>React</_name>
-  <id>{com.jetboystudio.inkscape-react}</id>
-  <dependency type="executable" location="path">inkscape-react</dependency>
-  <script>
-    <command reldir="extensions" interpreter="node">inkscape-react</command>
-  </script>
+    <_name>React Output</_name>
+    <id>org.inkscape.output.react</id>
+<!--     <dependency type="executable">inkscape-react</dependency> -->
+    <output>
+        <extension>.jsx</extension>
+        <mimetype>application/javascript</mimetype>
+        <_filetypename>React Component (*.jsx)</_filetypename>
+        <_filetypetooltip>React Component</_filetypetooltip>
+    </output>
+    <script>
+        <command>inkscape-react</command>
+    </script>
 </inkscape-extension>
