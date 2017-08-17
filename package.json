@@ -1,6 +1,6 @@
 {
   "name": "inkscape-react",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "This will allow you to output React components for current workspace in inkscape",
   "main": "index.js",
   "repository": {
@@ -12,13 +12,12 @@
   "bugs": {
     "url": "https://github.com/konsumer/inkscape-react/issues"
   },
+  "bin": {
+    "inkscape-react": "cli.js"
+  },
   "homepage": "https://github.com/konsumer/inkscape-react#readme",
   "dependencies": {
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.26.0",
-    "svg-to-jsx": "0.0.21"
-  },
-  "babel": {
-    "presets": ["env"]
+    "svg-to-jsx": "0.0.21",
+    "yargs": "^8.0.2"
   }
 }
