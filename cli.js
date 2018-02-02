@@ -28,7 +28,7 @@ parseString(svg, function (err, result) {
   if (!fname) {
     fname = basename(args._[0], '.svg')
   }
-  var name = classify(basename(fname, '.jsx'))
+  var name = classify(basename(fname.replace(/\./g,' '), '.jsx'))
   svgtojsx(svg)
     .then(function (jsx) {
       console.log([
